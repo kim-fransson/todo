@@ -17,7 +17,7 @@ export const Input = (props: InputProps) => {
         }
       }}
       className="flex border body-2 border-dark-gray/32 dark:border-white/60 rounded-full py-2 px-3 focus-within:border-blue
-              dark:placeholder:text-white/60 dark:text-white/87 group"
+              dark:placeholder:text-white/60 placeholder:text-dark-gray/60 dark:text-white/87 text-dark-gray/87 group"
     >
       <input
         className="bg-transparent outline-none flex-1"
@@ -30,7 +30,7 @@ export const Input = (props: InputProps) => {
       {value && (
         <button
           tabIndex={-1}
-          className="dark:bg-blue button px-6 py-2 -mr-3 -my-2 hidden rounded-full group-focus-within:inline-block outline-none"
+          className="bg-blue text-white/87 button px-6 py-2 -mr-3 -my-2 hidden rounded-full group-focus-within:inline-block outline-none"
         >
           Add todo
         </button>

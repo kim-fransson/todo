@@ -1,4 +1,5 @@
 import SunIcon from "@icons/light-mode.svg?react";
+import MoonIcon from "@icons/dark-mode.svg?react";
 import { Empty } from "@components/Empty";
 import { Input } from "@components/Input";
 import { useLocalStorage } from "@uidotdev/usehooks";
@@ -51,10 +52,26 @@ export default function App() {
       <div className="max-w-screen-md relative mx-auto pt-10 overflow-hidden">
         <div className="flex justify-between items-center text-white">
           <h1 className="heading-m">TODO</h1>
-          <SunIcon />
+          <label htmlFor="switch" className="cursor-pointer">
+            <input
+              id="switch"
+              type="checkbox"
+              className="hidden"
+              value="dark"
+              onChange={(e) => {
+                if (e.target.checked) {
+                  document.documentElement.classList.add("dark");
+                } else {
+                  document.documentElement.classList.remove("dark");
+                }
+              }}
+            />
+            <SunIcon className="dark:inline-block hidden" />
+            <MoonIcon className="dark:hidden inline-block" />
+          </label>
         </div>
 
-        <div className="bg-blue-gray mt-4 rounded-lg">
+        <div className="dark:bg-blue-gray bg-white mt-4 rounded-lg">
           <div className="shadow-md px-5 py-3">
             <Input onAdd={handleAdd} />
           </div>
@@ -77,7 +94,7 @@ export default function App() {
               <Empty />
             )}
             {todos.length > 0 && (
-              <span className="ml-auto subtext dark:text-white/87 absolute bottom-6 right-5">
+              <span className="ml-auto subtext dark:text-white/87 text-dark-gray/87 absolute bottom-6 right-5">
                 {`${completedTodos}/${todos.length} todos completed`}
               </span>
             )}
