@@ -23,6 +23,7 @@
     "@fontsource/kanit": "5.0.18",
     "@types/luxon": "3.3.7",
     "@uidotdev/usehooks": "2.4.1",
+    "flubber": "0.4.2",
     "framer-motion": "10.16.16",
     "luxon": "3.4.4",
     "react": "^18.2.0",
