@@ -4,22 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        blue: "#20233E",
-        gray: {
-          100: "#F5F5F5",
-          300: "#F1EFEF",
-          400: "#EAEAEA",
-          500: "#D8D8D8",
-          900: "#212121",
-        },
-        indigo: {
-          50: "#E8EAF6",
-          400: "#5C6BC0",
-        },
+        blue: "#93A9FF",
+        "light-gray": "#E5E5E5",
+        "dark-gray": "#212121",
+        "dark-blue-gray": "#181824",
+        "blue-gray": "#25273C",
       },
       opacity: {
         8: ".08",
-        24: ".24",
         32: ".32",
         87: ".87",
       },
@@ -28,7 +20,35 @@ export default {
   plugins: [
     // https://github.com/tailwindlabs/tailwindcss-intellisense/issues/227#issuecomment-1139895799
     ({ addUtilities }) => {
-      addUtilities({});
+      addUtilities({
+        ".heading-m": {
+          "font-weight": "500",
+          "font-size": "48px",
+          "letter-spacing": "0.12px",
+        },
+        ".heading-s": {
+          "font-weight": "400",
+          "font-size": "24px",
+          "letter-spacing": "0.06px",
+        },
+        ".body-1": {
+          "font-weight": "400",
+          "font-size": "18px",
+          "letter-spacing": "0.045px",
+        },
+        ".body-2": {
+          "font-weight": "400",
+          "font-size": "16px",
+        },
+        ".subtext": {
+          "font-weight": "300",
+          "font-size": "17px",
+        },
+        ".button": {
+          "font-weight": "400",
+          "font-size": "16px",
+        },
+      });
     },
   ],
 };
