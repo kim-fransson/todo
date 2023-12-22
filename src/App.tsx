@@ -7,6 +7,7 @@ import { useMemo, useReducer } from "react";
 import { TodoCard } from "@components/Todo";
 import { v4 as uuidv4 } from "uuid";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
+import { AnimatePresence } from "framer-motion";
 
 export default function App() {
   const [localStorageTodos] = useLocalStorage<Todo[]>("todos", []);
@@ -60,18 +61,20 @@ export default function App() {
           </div>
 
           <div className="flex-1 relative">
-            {todos.length > 0 ? (
+            {todos.length ? (
               <div className="pt-6 pb-20 px-5 flex flex-col gap-4">
-                {todos.map((todo) => (
-                  <TodoCard
-                    key={todo.id}
-                    todo={todo}
-                    onDelete={() => handleDelete(todo.id)}
-                    onComplete={(isCompleted) =>
-                      handleComplete(todo, isCompleted)
-                    }
-                  />
-                ))}
+                <AnimatePresence mode="popLayout">
+                  {todos.map((todo) => (
+                    <TodoCard
+                      key={todo.id}
+                      todo={todo}
+                      onDelete={() => handleDelete(todo.id)}
+                      onComplete={(isCompleted) =>
+                        handleComplete(todo, isCompleted)
+                      }
+                    />
+                  ))}
+                </AnimatePresence>
               </div>
             ) : (
               <Empty />
