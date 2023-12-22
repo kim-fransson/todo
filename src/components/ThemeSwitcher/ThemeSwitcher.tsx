@@ -1,10 +1,7 @@
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { useEffect, useState } from "react";
-import { animate, motion, useMotionValue } from "framer-motion";
-import { moon, sun } from "./paths";
-import { useFlubber } from "@/hooks/use-flubber";
-
-const paths = [moon, sun];
+import { useEffect } from "react";
+import SunIcon from "@icons/sun.svg?react";
+import MoonIcon from "@icons/moon.svg?react";
 
 export const ThemeSwitcher = () => {
   const prefersDarkModeMedia = window.matchMedia(
@@ -15,25 +12,10 @@ export const ThemeSwitcher = () => {
     prefersDarkModeMedia.matches,
   );
 
-  const [pathIndex, setPathIndex] = useState(0);
-  const progress = useMotionValue(pathIndex);
-  const path = useFlubber(progress, paths);
-
-  useEffect(() => {
-    const animation = animate(progress, pathIndex, {
-      duration: 0.15,
-      ease: "easeIn",
-    });
-
-    return () => animation.stop();
-  }, [pathIndex, progress]);
-
   useEffect(() => {
     if (isDarkMode) {
-      setPathIndex(0);
       document.documentElement.classList.add("dark");
     } else {
-      setPathIndex(1);
       document.documentElement.classList.remove("dark");
     }
   }, [isDarkMode]);
@@ -48,12 +30,8 @@ export const ThemeSwitcher = () => {
         value="dark"
         onChange={(e) => setIsDarkMode(e.target.checked)}
       />
-
-      <svg className="fill-white/87 h-10 w-10">
-        <g>
-          <motion.path d={path} />
-        </g>
-      </svg>
+      <SunIcon className="dark:inline-block hidden" />
+      <MoonIcon className="dark:hidden inline-block" />
     </label>
   );
 };

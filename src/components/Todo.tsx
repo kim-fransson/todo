@@ -2,7 +2,6 @@ import { Todo } from "@/types/todo";
 import CloseIcon from "@icons/close.svg?react";
 import Check from "@icons/check.svg?react";
 import { twMerge } from "tailwind-merge";
-import { motion } from "framer-motion";
 
 export type TodoProps = {
   todo: Todo;
@@ -14,11 +13,7 @@ export const TodoCard = (props: TodoProps) => {
   const { todo } = props;
   const isCompleted = todo.state === "COMPLETED";
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: -150 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, type: "spring" }}
+    <div
       className="group flex gap-2 items-center p-3 dark:text-white/87 
         dark:border-white/32 border-dark-gray/32 border rounded-lg relative text-dark-gray/87
       dark:hover:bg-white/8 hover:bg-dark-gray/8 dark:shadow-none shadow-sm"
@@ -48,6 +43,6 @@ export const TodoCard = (props: TodoProps) => {
       >
         <CloseIcon className="h-5 w-5" />
       </button>
-    </motion.div>
+    </div>
   );
 };

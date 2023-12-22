@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 export type InputProps = {
@@ -28,20 +27,14 @@ export const Input = (props: InputProps) => {
         onSubmit={() => props.onAdd(value)}
         onChange={(e) => setValue(e.target.value)}
       />
-      <AnimatePresence>
-        {value && (
-          <motion.button
-            initial={{ scaleX: 0.6, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            exit={{ scaleX: 0.6, opacity: 0 }}
-            transition={{ duration: 0.3, type: "spring" }}
-            tabIndex={-1}
-            className="bg-blue origin-right text-white/87 button md:px-6 px-2 py-2 -mr-3 -my-2 hidden rounded-full group-focus-within:inline-block outline-none"
-          >
-            Add todo
-          </motion.button>
-        )}
-      </AnimatePresence>
+      {value && (
+        <button
+          tabIndex={-1}
+          className="bg-blue origin-right text-white/87 button md:px-6 px-2 py-2 -mr-3 -my-2 hidden rounded-full group-focus-within:inline-block outline-none"
+        >
+          Add todo
+        </button>
+      )}
     </form>
   );
 };
