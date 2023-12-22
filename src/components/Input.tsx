@@ -36,7 +36,7 @@ export const Input = (props: InputProps) => {
             exit={{ scaleX: 0.6, opacity: 0 }}
             transition={{ duration: 0.3, type: "spring" }}
             tabIndex={-1}
-            className="bg-blue origin-right text-white/87 button px-6 py-2 -mr-3 -my-2 hidden rounded-full group-focus-within:inline-block outline-none"
+            className="bg-blue origin-right text-white/87 button md:px-6 px-2 py-2 -mr-3 -my-2 hidden rounded-full group-focus-within:inline-block outline-none"
           >
             Add todo
           </motion.button>

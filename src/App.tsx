@@ -3,14 +3,14 @@ import { Input } from "@components/Input";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { Todo } from "./types/todo";
 import { todoReducer } from "@reducers/todoReducer";
-import { useMemo, useReducer } from "react";
+import { useEffect, useMemo, useReducer } from "react";
 import { TodoCard } from "@components/Todo";
 import { v4 as uuidv4 } from "uuid";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
 import { AnimatePresence } from "framer-motion";
 
 export default function App() {
-  const [localStorageTodos] = useLocalStorage<Todo[]>("todos", []);
+  const [localStorageTodos, saveTodos] = useLocalStorage<Todo[]>("todos", []);
   const [todos, dispatch] = useReducer(todoReducer, localStorageTodos);
 
   const handleAdd = (text: string) => {
@@ -41,6 +41,10 @@ export default function App() {
     });
   };
 
+  useEffect(() => {
+    saveTodos(todos);
+  }, [todos, saveTodos]);
+
   const completedTodos = useMemo(
     () => todos.filter((todo) => todo.state === "COMPLETED").length,
     [todos],
@@ -49,7 +53,7 @@ export default function App() {
   return (
     <div className="dark:bg-dark-blue-gray bg-light-gray min-h-screen py-10 flex flex-col transition-colors">
       <div className="absolute top-0 left-0 right-0 h-1/4 bg-gradient-to-r from-[#005a7f] via-[#c48b8a] to-[#005a7f]" />
-      <div className="max-w-screen-md w-full gap-4 flex flex-1 flex-col relative mx-auto overflow-hidden">
+      <div className="max-w-screen-md w-full gap-4 flex flex-1 flex-col relative mx-auto overflow-hidden md:px-0 px-4">
         <div className="flex justify-between items-center text-white">
           <h1 className="heading-m">TODO</h1>
           <ThemeSwitcher />
