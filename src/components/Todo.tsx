@@ -18,7 +18,6 @@ export const TodoCard = (props: TodoProps) => {
       layout
       initial={{ opacity: 0, y: -150 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, x: 200, scale: 1.2 }}
       transition={{ duration: 0.4, type: "spring" }}
       className="group flex gap-2 items-center p-3 dark:text-white/87 
         dark:border-white/32 border-dark-gray/32 border rounded-lg relative text-dark-gray/87

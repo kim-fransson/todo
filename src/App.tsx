@@ -91,13 +91,13 @@ export default function App() {
           </div>
         </div>
       </div>
-      <footer className="fixed bottom-0 left-0 right-0 bg-white p-3 flex items-center justify-end gap-4">
+      <footer className="fixed bottom-0 left-0 right-0 dark:bg-blue-gray bg-white p-3 flex items-center justify-end gap-4">
         <div className="flex items-center gap-2">
-          <span className="select-none rounded-lg bg-[#672871] px-2 py-1 text-gray-100 body-2">
+          <span className="select-none rounded-lg bg-[#672871] px-2 py-1 text-white/87 body-2">
             Designs from
           </span>
           <a
-            className="body-2 hover:text-[#672871]"
+            className="body-2 hover:text-[#672871] dark:text-white/87 text-dark-gray/87"
             href="https://bigdevsoon.me/"
             target="_blank"
             title="BigDevSoon"
